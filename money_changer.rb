@@ -48,5 +48,10 @@ RSpec.describe ChangeMachine do
       change_machine = ChangeMachine.new
       expect(change_machine.change(25)).to eq([25])
     end
+
+    it 'should return [25, 25, 25, 25, 10, 5, 1, 1, 1, 1] if given 119' do
+      change_machine = ChangeMachine.new
+      expect(change_machine.change(119)).to eq([25, 25, 25, 25, 10, 5, 1, 1, 1, 1])
+    end
   end
 end
