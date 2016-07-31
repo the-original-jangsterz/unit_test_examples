@@ -4,8 +4,13 @@ class ChangeMachine
   def change(cents)
     coins = []
     while cents > 0
-      cents -= 1
-      coins << 1
+      if cents >= 5
+        cents -= 5
+        coins << 5
+      else
+        cents -= 1
+        coins << 1
+      end
     end
     coins
   end
@@ -21,6 +26,11 @@ RSpec.describe ChangeMachine do
     it 'should return [1, 1] if given 2' do
       change_machine = ChangeMachine.new
       expect(change_machine.change(2)).to eq([1, 1])
+    end
+
+    it 'should return [5] if given 5' do
+      change_machine = ChangeMachine.new
+      expect(change_machine.change(5)).to eq([5])
     end
   end
 end
